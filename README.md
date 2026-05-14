@@ -57,7 +57,7 @@ Cada entidad almacena únicamente la información necesaria y las relaciones ent
 
 Diagrama Entidad-Relación
 El diagrama entidad-relación representa la estructura de la base de datos de Pokemood.
-
+![alt text](image.png)
 
 
   ## Integrantes
