@@ -3,9 +3,7 @@ from controllers.authController import AuthController
 
 controller = AuthController()
 
-
 def loginView(page: ft.Page):
-
     correo = ft.TextField(label="Correo", width=300)
     contraseña = ft.TextField(
         label="Contraseña",
@@ -32,7 +30,7 @@ def loginView(page: ft.Page):
         page.update()
 
     btn_login = ft.ElevatedButton(
-        text="Iniciar Sesión",
+        content=ft.Text("Iniciar Sesión"),
         on_click=iniciar_sesion
     )
 

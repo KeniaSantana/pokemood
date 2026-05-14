@@ -1,11 +1,13 @@
 from database.connection import Database
-
 class UsuarioModel:
     def __init__(self):
         self.db = Database()
 
     def login(self, correo, contraseña):
         conn = self.db.get_connection()
+        if conn is None:
+            return None
+            
         cursor = conn.cursor(dictionary=True)
 
         query = "SELECT * FROM usuario WHERE correo=%s AND contraseña=%s"
