@@ -10,3 +10,15 @@ dependencies = [
     "pydantic>=2.13.4",
     "python-dotenv>=1.2.2",
 ]
+
+[project.scripts]
+#aqui definimos el comando corto.
+#importante: quitamos el prefijo "src. porque definimos src como la raiz.
+app = "main:main"
+
+[tool.uv]
+package = true
+
+#esta seccion es crucial para que python vea el contenido de src como el nivel raiz. 
+[tool.setuptools.package-dir]
+"" = "src"
