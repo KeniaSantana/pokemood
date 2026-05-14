@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "bcrypt>=5.0.0",
+    "flet>=0.85.1",
     "mysql-connector-python>=9.7.0",
     "pydantic>=2.13.4",
     "python-dotenv>=1.2.2",

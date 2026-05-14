@@ -4,7 +4,7 @@ from controllers.authController import AuthController
 controller = AuthController()
 
 
-def login_view(page: ft.Page):
+def loginView(page: ft.Page):
 
     correo = ft.TextField(label="Correo", width=300)
     contraseña = ft.TextField(
