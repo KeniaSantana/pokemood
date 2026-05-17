@@ -1,17 +1,15 @@
 import flet as ft
-from controllers.authController import AuthController
 
-controller = AuthController()
 
-def LoginView(page: ft.Page):
-    
-    email_input = ft.TextField(
+def LoginView(page: ft.Page, controller):
+
+    correo_input = ft.TextField(
         label="Correo Electrónico",
         width=350,
         border_radius=10
     )
 
-    pass_input = ft.TextField(
+    password_input = ft.TextField(
         label="Contraseña",
         password=True,
         can_reveal_password=True,
@@ -19,45 +17,49 @@ def LoginView(page: ft.Page):
         border_radius=10
     )
 
+    def mostrar_mensaje(texto):
+
+        page.snack_bar = ft.SnackBar(
+            ft.Text(texto)
+        )
+
+        page.snack_bar.open = True
+        page.update()
+
     def login_click(e):
-        if not email_input.value or not pass_input.value:
-            page.snack_bar = ft.SnackBar(
-                ft.Text("Por favor, llene todos los campos")
-            )
-            page.snack_bar.open = True
-            page.update()
+
+        if not correo_input.value or not password_input.value:
+
+            mostrar_mensaje("Llena todos los campos")
             return
 
-        email = email_input.value
-        password = pass_input.value
+        correo = correo_input.value
+        password = password_input.value
 
         try:
-            user, msg = controller.login(email, password)
+
+            user, msg = controller.login(
+                correo,
+                password
+            )
 
             if user:
+
                 page.session.set("user", user)
-                
-                page.snack_bar = ft.SnackBar(
-                    ft.Text("Inicio de sesión correcto")
-                )
-                page.snack_bar.open = True
-                page.update()
-                
+
+                mostrar_mensaje(" Inicio correcto")
+
                 page.go("/dashboard")
+
             else:
-                page.snack_bar = ft.SnackBar(
-                    ft.Text(msg)
-                )
-                page.snack_bar.open = True
-                page.update()
+
+                mostrar_mensaje(msg)
 
         except Exception as ex:
+
             print("ERROR LOGIN:", ex)
-            page.snack_bar = ft.SnackBar(
-                ft.Text(f"Error: {ex}")
-            )
-            page.snack_bar.open = True
-            page.update()
+
+            mostrar_mensaje(f" Error: {ex}")
 
     login_button = ft.ElevatedButton(
         "Iniciar sesión",
@@ -75,34 +77,49 @@ def LoginView(page: ft.Page):
         on_click=lambda _: page.go("/registrarse")
     )
 
-    pass_input.on_submit = login_click
+    password_input.on_submit = login_click
 
     return ft.View(
+
         route="/",
+
         vertical_alignment=ft.MainAxisAlignment.CENTER,
+
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+
         appbar=ft.AppBar(
             title=ft.Text("POKEMOOD - Login"),
             bgcolor="#CAA1F8",
             color="black"
         ),
+
         controls=[
+
             ft.Column(
+
                 [
+
                     ft.Text(
                         "Acceso al sistema",
                         size=24,
                         weight="bold"
                     ),
-                    email_input,
-                    pass_input,
+
+                    correo_input,
+
+                    password_input,
+
                     login_button,
+
                     registrar_button,
+
                     ft.TextButton(
                         "¿Olvidaste la contraseña?",
                         on_click=lambda _: page.go("/recuperar")
                     )
+
                 ],
+
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 spacing=20
             )

@@ -10,21 +10,19 @@ def start(page: ft.Page):
     page.title = "Sistema de inicio de sesión"
     page.window_width = 450
     page.window_height = 700
+    page.theme_mode = ft.ThemeMode.DARK
 
     auth_ctrl = AuthController()
-
 
     def route_change(e):
 
         page.views.clear()
-
 
         if page.route == "/":
 
             page.views.append(
                 LoginView(page, auth_ctrl)
             )
-
 
         elif page.route == "/dashboard":
 
@@ -35,15 +33,14 @@ def start(page: ft.Page):
         elif page.route == "/registrarse":
 
             page.views.append(
-                RegistroView(page, auth_ctrl)
+                RegisterView(page, auth_ctrl)
             )
-
 
         else:
 
             page.views.append(
                 ft.View(
-                    route="/",
+                    route="/error",
                     controls=[
                         ft.Text("Ruta no encontrada")
                     ]
@@ -65,17 +62,14 @@ def start(page: ft.Page):
     page.on_route_change = route_change
     page.on_view_pop = view_pop
 
+    print("Iniciando navegación....")
 
-
-    print("Iniciando navegacion....")
-    if page.route=="/":
-        route_change(None)
-    else:
-        page.go("/")
+    page.go("/")
 
 
 def main():
     ft.app(target=start)
+
 
 if __name__ == "__main__":
     main()

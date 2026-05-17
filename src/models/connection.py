@@ -1,9 +1,12 @@
 import mysql.connector
 
 class Database:
+
     @staticmethod
     def get_connection():
+
         try:
+
             conn = mysql.connector.connect(
                 host="127.0.0.1",
                 user="root",
@@ -12,9 +15,12 @@ class Database:
                 port=3306
             )
 
-            print("Conexión a la BD exitosa")
-            return conn
+            if conn.is_connected():
+
+                print("Conexión a la BD exitosa")
+                return conn
 
         except mysql.connector.Error as err:
-            print("Error de conexión a MySQL:", err)
-            raise
+
+            print(f"Error de conexión a MySQL: {err}")
+            return None
