@@ -1,5 +1,5 @@
 import bcrypt
-from database.connection import Database
+from models.connection import Database
 
 
 class UsuarioModel:
@@ -103,7 +103,6 @@ class UsuarioModel:
                 print(" Usuario no encontrado")
                 return None
 
-            # Verificar contraseña
             if bcrypt.checkpw(
                 password.encode("utf-8"),
                 user["password"].encode("utf-8")
@@ -157,13 +156,12 @@ class UsuarioModel:
                 print("Correo no encontrado")
                 return False
 
-            # Encriptar nueva contraseña
+
             hashed_pw = bcrypt.hashpw(
                 nueva_password.encode("utf-8"),
                 bcrypt.gensalt()
             )
 
-            # Actualizar contraseña
             cursor.execute(
                 """
                 UPDATE usuarios

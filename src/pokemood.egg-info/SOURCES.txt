@@ -13,4 +13,5 @@ src/pokemood.egg-info/requires.txt
 src/pokemood.egg-info/top_level.txt
 src/views/dashboardView.py
 src/views/loginView.py
+src/views/recoveryView.py
 src/views/registerView.py

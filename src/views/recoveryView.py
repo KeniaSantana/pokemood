@@ -58,7 +58,7 @@ def RecoveryView(page: ft.Page, controller):
 
         appbar=ft.AppBar(
             title=ft.Text("Recuperar Contraseña"),
-            bgcolor="#CAA1F8",
+            bgcolor="#F03333",
             color="black"
         ),
 
@@ -82,7 +82,7 @@ def RecoveryView(page: ft.Page, controller):
                         "Actualizar Contraseña",
                         on_click=recuperar_click,
                         width=350,
-                        bgcolor="#F7ADC4",
+                        bgcolor="#FDFDFD",
                         color="black"
                     ),
 

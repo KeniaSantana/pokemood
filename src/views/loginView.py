@@ -65,13 +65,13 @@ def LoginView(page: ft.Page, controller):
         "Iniciar sesión",
         on_click=login_click,
         width=350,
-        bgcolor="#F7ADC4",
+        bgcolor="#FC4848",
         color="black"
     )
 
     registrar_button = ft.ElevatedButton(
         "Crear una nueva cuenta",
-        bgcolor="#F7ADC4",
+        bgcolor="#FFFFFF",
         color="black",
         width=350,
         on_click=lambda _: page.go("/registrarse")

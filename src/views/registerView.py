@@ -102,7 +102,7 @@ def RegisterView(page: ft.Page, controller):
         "Registrarse",
         on_click=registrar_click,
         width=350,
-        bgcolor="#F7ADC4",
+        bgcolor="#FFFFFF",
         color="black"
     )
 
@@ -121,7 +121,7 @@ def RegisterView(page: ft.Page, controller):
 
         appbar=ft.AppBar(
             title=ft.Text("POKEMOOD - Registro"),
-            bgcolor="#CAA1F8",
+            bgcolor="#FF3333",
             color="black"
         ),
 

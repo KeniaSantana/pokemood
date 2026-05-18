@@ -62,10 +62,11 @@ def start(page: ft.Page):
     page.on_route_change = route_change
     page.on_view_pop = view_pop
 
-    print("Iniciando navegación....")
-
-    page.go("/")
-
+    print("Iniciando navegacion....")
+    if page.route=="/":
+        route_change(None)
+    else:
+        page.go("/")
 
 def main():
     ft.app(target=start)
