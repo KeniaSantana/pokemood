@@ -74,6 +74,24 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   UNIQUE KEY `correo` (`correo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+USE pokemood;
+
+INSERT INTO usuario (
+
+    nombre,
+    correo,
+    contraseña
+
+)
+
+VALUES (
+
+    'Kenia Santana',
+    '23308060610371@cetis61.edu.mx',
+    '123456'
+
+);
+
 -- La exportación de datos fue deseleccionada.
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
