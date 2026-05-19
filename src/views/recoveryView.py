@@ -1,20 +1,13 @@
 import flet as ft
 
+from services.email_service import enviar_correo
+
 
 def RecoveryView(page: ft.Page, controller):
 
     correo_input = ft.TextField(
         label="Correo Electrónico",
-        width=350,
-        border_radius=10
-    )
-
-    nueva_password_input = ft.TextField(
-        label="Nueva Contraseña",
-        password=True,
-        can_reveal_password=True,
-        width=350,
-        border_radius=10
+        width=350
     )
 
     def mostrar_mensaje(texto):
@@ -24,29 +17,56 @@ def RecoveryView(page: ft.Page, controller):
         )
 
         page.snack_bar.open = True
+
         page.update()
 
     def recuperar_click(e):
 
-        if not correo_input.value or not nueva_password_input.value:
+        if not correo_input.value:
 
-            mostrar_mensaje(" Completa todos los campos")
+            mostrar_mensaje(
+                "Ingresa tu correo"
+            )
+
             return
 
+        nueva_password = "123456"
+
         success = controller.model.recuperar_password(
+
             correo_input.value,
-            nueva_password_input.value
+            nueva_password
+
         )
 
         if success:
 
-            mostrar_mensaje("Contraseña actualizada")
+            enviado = enviar_correo(
 
-            page.go("/")
+                correo_input.value,
+                nueva_password
+
+            )
+
+            if enviado:
+
+                mostrar_mensaje(
+                    "Correo enviado"
+                )
+
+                page.go("/")
+
+            else:
+
+                mostrar_mensaje(
+                    "No se pudo enviar el correo"
+                )
 
         else:
 
-            mostrar_mensaje(" Correo no encontrado")
+            mostrar_mensaje(
+                "Correo no encontrado"
+            )
 
     return ft.View(
 
@@ -58,8 +78,7 @@ def RecoveryView(page: ft.Page, controller):
 
         appbar=ft.AppBar(
             title=ft.Text("Recuperar Contraseña"),
-            bgcolor="#F03333",
-            color="black"
+            bgcolor="#F03333"
         ),
 
         controls=[
@@ -70,24 +89,20 @@ def RecoveryView(page: ft.Page, controller):
 
                     ft.Text(
                         "Recuperar Contraseña",
-                        size=24,
+                        size=28,
                         weight="bold"
                     ),
 
                     correo_input,
 
-                    nueva_password_input,
-
                     ft.ElevatedButton(
-                        "Actualizar Contraseña",
+                        "Enviar correo",
                         on_click=recuperar_click,
-                        width=350,
-                        bgcolor="#FDFDFD",
-                        color="black"
+                        width=350
                     ),
 
                     ft.TextButton(
-                        "Volver al login",
+                        "Volver",
                         on_click=lambda _: page.go("/")
                     )
 

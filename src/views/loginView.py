@@ -5,16 +5,14 @@ def LoginView(page: ft.Page, controller):
 
     correo_input = ft.TextField(
         label="Correo Electrónico",
-        width=350,
-        border_radius=10
+        width=350
     )
 
     password_input = ft.TextField(
         label="Contraseña",
         password=True,
         can_reveal_password=True,
-        width=350,
-        border_radius=10
+        width=350
     )
 
     def mostrar_mensaje(texto):
@@ -24,60 +22,40 @@ def LoginView(page: ft.Page, controller):
         )
 
         page.snack_bar.open = True
+
         page.update()
 
     def login_click(e):
 
-        if not correo_input.value or not password_input.value:
+        if (
+            not correo_input.value or
+            not password_input.value
+        ):
 
-            mostrar_mensaje("Llena todos los campos")
-            return
-
-        correo = correo_input.value
-        password = password_input.value
-
-        try:
-
-            user, msg = controller.login(
-                correo,
-                password
+            mostrar_mensaje(
+                "Llena todos los campos"
             )
 
-            if user:
+            return
 
-                page.session.set("user", user)
+        user, msg = controller.login(
 
-                mostrar_mensaje(" Inicio correcto")
+            correo_input.value,
+            password_input.value
 
-                page.go("/dashboard")
+        )
 
-            else:
+        if user:
 
-                mostrar_mensaje(msg)
+            mostrar_mensaje(
+                "Inicio correcto"
+            )
 
-        except Exception as ex:
+            page.go("/dashboard")
 
-            print("ERROR LOGIN:", ex)
+        else:
 
-            mostrar_mensaje(f" Error: {ex}")
-
-    login_button = ft.ElevatedButton(
-        "Iniciar sesión",
-        on_click=login_click,
-        width=350,
-        bgcolor="#FC4848",
-        color="black"
-    )
-
-    registrar_button = ft.ElevatedButton(
-        "Crear una nueva cuenta",
-        bgcolor="#FFFFFF",
-        color="black",
-        width=350,
-        on_click=lambda _: page.go("/registrarse")
-    )
-
-    password_input.on_submit = login_click
+            mostrar_mensaje(msg)
 
     return ft.View(
 
@@ -88,9 +66,8 @@ def LoginView(page: ft.Page, controller):
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
 
         appbar=ft.AppBar(
-            title=ft.Text("POKEMOOD - Login"),
-            bgcolor="#CAA1F8",
-            color="black"
+            title=ft.Text("POKEMOOD Login"),
+            bgcolor="#CAA1F8"
         ),
 
         controls=[
@@ -100,8 +77,8 @@ def LoginView(page: ft.Page, controller):
                 [
 
                     ft.Text(
-                        "Acceso al sistema",
-                        size=24,
+                        "Iniciar Sesión",
+                        size=28,
                         weight="bold"
                     ),
 
@@ -109,12 +86,22 @@ def LoginView(page: ft.Page, controller):
 
                     password_input,
 
-                    login_button,
+                    ft.ElevatedButton(
+                        "Iniciar sesión",
+                        on_click=login_click,
+                        width=350,
+                        bgcolor="#FC4848",
+                        color="white"
+                    ),
 
-                    registrar_button,
+                    ft.ElevatedButton(
+                        "Crear cuenta",
+                        on_click=lambda _: page.go("/registrarse"),
+                        width=350
+                    ),
 
                     ft.TextButton(
-                        "¿Olvidaste la contraseña?",
+                        "¿Olvidaste tu contraseña?",
                         on_click=lambda _: page.go("/recuperar")
                     )
 
