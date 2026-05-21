@@ -11,6 +11,7 @@ src/pokemood.egg-info/dependency_links.txt
 src/pokemood.egg-info/entry_points.txt
 src/pokemood.egg-info/requires.txt
 src/pokemood.egg-info/top_level.txt
+src/services/email_service.py
 src/views/dashboardView.py
 src/views/loginView.py
 src/views/recoveryView.py
