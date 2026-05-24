@@ -1,2 +1,5 @@
-Conexión a la BD exitosa
-Error recuperando contraseña: 1146 (42S02): Table 'poke.usuarios' doesn't exist
+    print("Iniciando navegacion....")
+    if page.route=="/":
+        route_change(None)
+    else:
+        page.go("/")

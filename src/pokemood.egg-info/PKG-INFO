@@ -10,6 +10,7 @@ Requires-Dist: flet>=0.85.1
 Requires-Dist: mysql-connector-python>=9.7.0
 Requires-Dist: pydantic[email]>=2.13.4
 Requires-Dist: python-dotenv>=1.2.2
+Requires-Dist: requests>=2.34.2
 
 ## tituilo de la aplicacion
 * "Pokemood" *

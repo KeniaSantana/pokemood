@@ -1,11 +1,14 @@
 import bcrypt
+
 from models.connection import Database
 
 
 class UsuarioModel:
 
     def __init__(self):
+
         self.db = Database()
+
 
     def registrar(self, usuario_data):
 
@@ -21,24 +24,34 @@ class UsuarioModel:
 
             cursor = conn.cursor(dictionary=True)
 
+
             cursor.execute(
-                "SELECT id FROM usuarios WHERE correo = %s",
-                (usuario_data.correo,)
+
+                "SELECT id_usuario FROM usuario WHERE correo = %s",
+
+                (usuario_data.email,)
+
             )
 
             if cursor.fetchone():
 
-                print(" El correo ya existe")
+                print("El correo ya existe")
                 return False
 
+  
             hashed_pw = bcrypt.hashpw(
+
                 usuario_data.password.encode("utf-8"),
+
                 bcrypt.gensalt()
+
             )
 
+
             cursor.execute(
+
                 """
-                INSERT INTO usuarios
+                INSERT INTO usuario
                 (
                     nombre,
                     apellido,
@@ -48,13 +61,15 @@ class UsuarioModel:
                 )
                 VALUES (%s, %s, %s, %s, %s)
                 """,
+
                 (
                     usuario_data.nombre,
                     usuario_data.apellido,
-                    usuario_data.correo,
+                    usuario_data.email,
                     hashed_pw.decode("utf-8"),
                     usuario_data.telefono
                 )
+
             )
 
             conn.commit()
@@ -65,7 +80,8 @@ class UsuarioModel:
 
         except Exception as e:
 
-            print(f" Error al registrar: {e}")
+            print(f"Error al registrar: {e}")
+
             return False
 
         finally:
@@ -75,6 +91,7 @@ class UsuarioModel:
 
             if conn:
                 conn.close()
+
 
 
     def validar_login(self, correo, password):
@@ -92,33 +109,43 @@ class UsuarioModel:
             cursor = conn.cursor(dictionary=True)
 
             cursor.execute(
-                "SELECT * FROM usuarios WHERE correo = %s",
+
+                "SELECT * FROM usuario WHERE correo = %s",
+
                 (correo,)
+
             )
 
             user = cursor.fetchone()
 
             if not user:
 
-                print(" Usuario no encontrado")
+                print("Usuario no encontrado")
                 return None
 
+
             if bcrypt.checkpw(
+
                 password.encode("utf-8"),
+
                 user["password"].encode("utf-8")
+
             ):
 
                 print("Inicio de sesión correcto")
+
                 return user
 
             else:
 
-                print(" Contraseña incorrecta")
+                print("Contraseña incorrecta")
+
                 return None
 
         except Exception as err:
 
             print(f"Error en login: {err}")
+
             return None
 
         finally:
@@ -128,6 +155,8 @@ class UsuarioModel:
 
             if conn:
                 conn.close()
+
+
 
     def recuperar_password(self, correo, nueva_password):
 
@@ -143,10 +172,13 @@ class UsuarioModel:
 
             cursor = conn.cursor(dictionary=True)
 
-
+    
             cursor.execute(
-                "SELECT * FROM usuarios WHERE correo = %s",
+
+                "SELECT * FROM usuario WHERE correo = %s",
+
                 (correo,)
+
             )
 
             user = cursor.fetchone()
@@ -154,24 +186,32 @@ class UsuarioModel:
             if not user:
 
                 print("Correo no encontrado")
+
                 return False
 
 
             hashed_pw = bcrypt.hashpw(
+
                 nueva_password.encode("utf-8"),
+
                 bcrypt.gensalt()
+
             )
 
+
             cursor.execute(
+
                 """
-                UPDATE usuarios
+                UPDATE usuario
                 SET password = %s
                 WHERE correo = %s
                 """,
+
                 (
                     hashed_pw.decode("utf-8"),
                     correo
                 )
+
             )
 
             conn.commit()
@@ -183,6 +223,7 @@ class UsuarioModel:
         except Exception as e:
 
             print(f"Error recuperando contraseña: {e}")
+
             return False
 
         finally:
@@ -193,9 +234,13 @@ class UsuarioModel:
             if conn:
                 conn.close()
 
+
+
     def login(self, correo, password):
 
         return self.validar_login(
+
             correo,
             password
+
         )

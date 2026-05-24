@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `pokemon` (
 -- Volcando datos para la tabla poke.pokemon: ~0 rows (aproximadamente)
 
 -- Volcando estructura para tabla poke.usuario
-CREATE TABLE IF NOT EXISTS `usuario` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   `correo` varchar(100) NOT NULL,

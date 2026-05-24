@@ -1,6 +1,7 @@
 README.md
 pyproject.toml
 src/main.py
+src/components/navbar.py
 src/controllers/authController.py
 src/models/connection.py
 src/models/schemasModel.py
@@ -13,6 +14,10 @@ src/pokemood.egg-info/requires.txt
 src/pokemood.egg-info/top_level.txt
 src/services/email_service.py
 src/views/dashboardView.py
+src/views/emocionesView.py
+src/views/historialView.py
 src/views/loginView.py
+src/views/perfilView.py
+src/views/pokemonView.py
 src/views/recoveryView.py
 src/views/registerView.py

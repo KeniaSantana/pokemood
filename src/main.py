@@ -1,11 +1,13 @@
 import flet as ft
-
 from controllers.authController import AuthController
-
 from views.loginView import LoginView
 from views.dashboardView import DashboardView
 from views.registerView import RegisterView
 from views.recoveryView import RecoveryView
+from views.emocionesView import EmocionesView
+from views.historialView import HistorialView
+from views.pokemonView import PokemonView
+from views.perfilView import PerfilView
 
 
 def start(page: ft.Page):
@@ -31,7 +33,6 @@ def start(page: ft.Page):
                     auth_ctrl
                 )
             )
-
 
         elif page.route == "/dashboard":
 
@@ -59,6 +60,45 @@ def start(page: ft.Page):
                     auth_ctrl
                 )
             )
+
+
+        elif page.route == "/emociones":
+
+            page.views.append(
+                EmocionesView(
+                    page,
+                    auth_ctrl
+                )
+            )
+
+        elif page.route == "/historial":
+
+            page.views.append(
+                HistorialView(
+                    page,
+                    auth_ctrl
+                )
+            )
+
+
+        elif page.route == "/pokemon":
+
+            page.views.append(
+                PokemonView(
+                    page,
+                    auth_ctrl
+                )
+            )
+
+        elif page.route == "/perfil":
+
+            page.views.append(
+                PerfilView(
+                    page,
+                    auth_ctrl
+                )
+            )
+
         else:
 
             page.views.append(
@@ -105,6 +145,9 @@ def start(page: ft.Page):
         route_change(None)
     else:
         page.go("/")
+
+
+
 
 
 def main():

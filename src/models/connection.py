@@ -8,7 +8,7 @@ class Database:
                 host="127.0.0.1",
                 user="root",
                 password="",
-                database="poke",
+                database="pokemon",
                 port=3306
             )
 

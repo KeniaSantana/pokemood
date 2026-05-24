@@ -15,6 +15,8 @@ def LoginView(page: ft.Page, controller):
         width=350
     )
 
+
+
     def mostrar_mensaje(texto):
 
         page.snack_bar = ft.SnackBar(
@@ -25,11 +27,15 @@ def LoginView(page: ft.Page, controller):
 
         page.update()
 
+
+
     def login_click(e):
 
         if (
+
             not correo_input.value or
             not password_input.value
+
         ):
 
             mostrar_mensaje(
@@ -47,6 +53,9 @@ def LoginView(page: ft.Page, controller):
 
         if user:
 
+ 
+            page.session.user = user
+
             mostrar_mensaje(
                 "Inicio correcto"
             )
@@ -57,6 +66,8 @@ def LoginView(page: ft.Page, controller):
 
             mostrar_mensaje(msg)
 
+
+
     return ft.View(
 
         route="/",
@@ -66,8 +77,11 @@ def LoginView(page: ft.Page, controller):
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
 
         appbar=ft.AppBar(
+
             title=ft.Text("POKEMOOD Login"),
+
             bgcolor="#CAA1F8"
+
         ),
 
         controls=[
@@ -87,28 +101,45 @@ def LoginView(page: ft.Page, controller):
                     password_input,
 
                     ft.ElevatedButton(
+
                         "Iniciar sesión",
+
                         on_click=login_click,
+
                         width=350,
+
                         bgcolor="#FC4848",
+
                         color="white"
+
                     ),
 
                     ft.ElevatedButton(
+
                         "Crear cuenta",
+
                         on_click=lambda _: page.go("/registrarse"),
+
                         width=350
+
                     ),
 
                     ft.TextButton(
+
                         "¿Olvidaste tu contraseña?",
+
                         on_click=lambda _: page.go("/recuperar")
+
                     )
 
                 ],
 
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+
                 spacing=20
+
             )
+
         ]
+
     )
