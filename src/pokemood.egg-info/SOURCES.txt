@@ -13,6 +13,7 @@ src/pokemood.egg-info/entry_points.txt
 src/pokemood.egg-info/requires.txt
 src/pokemood.egg-info/top_level.txt
 src/services/email_service.py
+src/services/pokemonService.py
 src/views/dashboardView.py
 src/views/emocionesView.py
 src/views/historialView.py

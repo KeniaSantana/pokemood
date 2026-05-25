@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 -- Volcando datos para la tabla pokemon.usuario: ~1 rows (aproximadamente)
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `correo`, `password`, `telefono`) VALUES
-	(1, 'Kenia', 'Santana', '23308060610371@cetis61.edu.mx', '123456', '6561234567');
+	(1, 'Kenia', 'Santana', '23308060610371@cetis61.edu.mx', 'Santana2008JC', '6561234567');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

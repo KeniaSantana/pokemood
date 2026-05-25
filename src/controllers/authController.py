@@ -12,7 +12,7 @@ class AuthController:
 
         self.model = UsuarioModel()
 
- 
+
     def registrar_usuario(
 
         self,
