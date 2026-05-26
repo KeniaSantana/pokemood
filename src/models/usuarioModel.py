@@ -122,15 +122,10 @@ class UsuarioModel:
 
                 print("Usuario no encontrado")
                 return None
+            
+            if password == user["contraseña"]:
 
 
-            if bcrypt.checkpw(
-
-                password.encode("utf-8"),
-
-                user["password"].encode("utf-8")
-
-            ):
 
                 print("Inicio de sesión correcto")
 
