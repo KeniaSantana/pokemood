@@ -5,7 +5,7 @@ def Navbar(page: ft.Page):
 
     return ft.Container(
 
-        bgcolor="#E6D5FF",
+        bgcolor="#F8423F",
 
         padding=10,
 

@@ -123,7 +123,7 @@ class UsuarioModel:
                 print("Usuario no encontrado")
                 return None
             
-            if password == user["contraseña"]:
+            if password == user["password"]:
 
 
 

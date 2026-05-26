@@ -80,7 +80,7 @@ def LoginView(page: ft.Page, controller):
 
             title=ft.Text("POKEMOOD Login"),
 
-            bgcolor="#CAA1F8"
+            bgcolor="#FF0000"
 
         ),
 
