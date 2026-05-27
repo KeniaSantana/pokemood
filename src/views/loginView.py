@@ -15,8 +15,6 @@ def LoginView(page: ft.Page, controller):
         width=350
     )
 
-
-
     def mostrar_mensaje(texto):
 
         page.snack_bar = ft.SnackBar(
@@ -26,8 +24,6 @@ def LoginView(page: ft.Page, controller):
         page.snack_bar.open = True
 
         page.update()
-
-
 
     def login_click(e):
 
@@ -53,9 +49,6 @@ def LoginView(page: ft.Page, controller):
 
         if user:
 
- 
-            page.session.user = user
-
             mostrar_mensaje(
                 "Inicio correcto"
             )
@@ -65,8 +58,6 @@ def LoginView(page: ft.Page, controller):
         else:
 
             mostrar_mensaje(msg)
-
-
 
     return ft.View(
 

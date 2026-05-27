@@ -24,21 +24,22 @@ class UsuarioModel:
 
             cursor = conn.cursor(dictionary=True)
 
-
+            # Verificar si el correo ya existe
             cursor.execute(
 
                 "SELECT id_usuario FROM usuario WHERE correo = %s",
 
-                (usuario_data.email,)
+                (usuario_data.correo,)
 
             )
 
             if cursor.fetchone():
 
                 print("El correo ya existe")
+
                 return False
 
-  
+            # Encriptar contraseña
             hashed_pw = bcrypt.hashpw(
 
                 usuario_data.password.encode("utf-8"),
@@ -47,7 +48,7 @@ class UsuarioModel:
 
             )
 
-
+            # Insertar usuario
             cursor.execute(
 
                 """
@@ -65,7 +66,7 @@ class UsuarioModel:
                 (
                     usuario_data.nombre,
                     usuario_data.apellido,
-                    usuario_data.email,
+                    usuario_data.correo,
                     hashed_pw.decode("utf-8"),
                     usuario_data.telefono
                 )
@@ -91,7 +92,6 @@ class UsuarioModel:
 
             if conn:
                 conn.close()
-
 
 
     def validar_login(self, correo, password):
@@ -121,11 +121,17 @@ class UsuarioModel:
             if not user:
 
                 print("Usuario no encontrado")
+
                 return None
-            
-            if password == user["password"]:
 
+            # Verificar contraseña con bcrypt
+            if bcrypt.checkpw(
 
+                password.encode("utf-8"),
+
+                user["password"].encode("utf-8")
+
+            ):
 
                 print("Inicio de sesión correcto")
 
@@ -152,8 +158,7 @@ class UsuarioModel:
                 conn.close()
 
 
-
-    def recuperar_password(self, correo, nueva_password):
+    def actualizar_password(self, correo, nueva_password):
 
         conn = None
         cursor = None
@@ -167,7 +172,6 @@ class UsuarioModel:
 
             cursor = conn.cursor(dictionary=True)
 
-    
             cursor.execute(
 
                 "SELECT * FROM usuario WHERE correo = %s",
@@ -184,7 +188,7 @@ class UsuarioModel:
 
                 return False
 
-
+            # Encriptar nueva contraseña
             hashed_pw = bcrypt.hashpw(
 
                 nueva_password.encode("utf-8"),
@@ -192,7 +196,6 @@ class UsuarioModel:
                 bcrypt.gensalt()
 
             )
-
 
             cursor.execute(
 
@@ -228,7 +231,6 @@ class UsuarioModel:
 
             if conn:
                 conn.close()
-
 
 
     def login(self, correo, password):
