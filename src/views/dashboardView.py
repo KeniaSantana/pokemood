@@ -103,7 +103,7 @@ def DashboardView(page: ft.Page, controller):
 
                                     width=180,
 
-                                    bgcolor="#A4C2F4",
+                                    bgcolor="#8FA0BD",
 
                                     on_click=lambda _: (
                                         setattr(
