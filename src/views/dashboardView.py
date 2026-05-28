@@ -88,10 +88,8 @@ def DashboardView(page: ft.Page, controller):
                                         setattr(
                                             page.session,
                                             "pokemon",
-                                            "pikachu",
-                                            "dedenne",
-                                            "minun",
-                                            "pusle",
+                                            "pikachu"
+                                            
                                             
                                         ),
                                         page.go("/pokemon")
