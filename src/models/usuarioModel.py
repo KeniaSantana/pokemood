@@ -118,10 +118,7 @@ class UsuarioModel:
             try:
 
 
-                if bcrypt.checkpw(
-                    password.encode("utf-8"),
-                    user["password"].encode("utf-8")
-                ):
+                if password == user["password"]:
 
                     print("Inicio de sesión correcto")
                     return user

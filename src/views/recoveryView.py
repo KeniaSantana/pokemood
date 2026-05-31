@@ -32,7 +32,11 @@ def RecoveryView(page: ft.Page, controller):
 
         nueva_password = "123456"
 
-        success = controller.model.recuperar_password(
+        # =========================
+        # CAMBIO AQUÍ
+        # =========================
+
+        success = controller.model.actualizar_password(
 
             correo_input.value,
             nueva_password
