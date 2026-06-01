@@ -78,6 +78,27 @@ def DashboardView(page: ft.Page, controller):
 
                                 ft.ElevatedButton(
 
+                                    "😎 Motivado",
+
+                                    width=180,
+
+                                    bgcolor="#FFF40D",
+
+                                    on_click=lambda _: (
+                                        setattr(
+                                            page.session,
+                                            "pokemon",
+                                            "Magikarp"
+                                            
+                                            
+                                        ),
+                                        page.go("/pokemon")
+                                    )
+
+                                ),
+                                
+                                ft.ElevatedButton(
+
                                     "😊 Feliz",
 
                                     width=180,
@@ -134,6 +155,46 @@ def DashboardView(page: ft.Page, controller):
                                     )
 
                                 ),
+                                
+                                ft.ElevatedButton(
+
+                                    "🤬 Furioso",
+
+                                    width=180,
+
+                                    bgcolor="#FF1000",
+
+                                    on_click=lambda _: (
+                                        setattr(
+                                            page.session,
+                                            "pokemon",
+                                            "Annihilape",
+                                            
+                                        ),
+                                        page.go("/pokemon")
+                                    )
+
+                                ),
+                                
+                                ft.ElevatedButton(
+
+                                    "😣 frustrado",
+
+                                    width=180,
+
+                                    bgcolor="#0017C7",
+
+                                    on_click=lambda _: (
+                                        setattr(
+                                            page.session,
+                                            "pokemon",
+                                            "Psyduck"
+                                        ),
+                                        page.go("/pokemon")
+                                    )
+
+                                ),
+                            
 
                                 ft.ElevatedButton(
 

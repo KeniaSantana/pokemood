@@ -8,7 +8,9 @@ def EmocionesView(page: ft.Page, controller):
 
         "😊 Feliz",
         "😡 Enojado",
+        "🤬 Furioso",
         "🥺 Triste",
+        "😣 frustrado",
         "😴 Cansado",
         "😎 Motivado"
 
