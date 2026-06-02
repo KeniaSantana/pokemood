@@ -32,9 +32,6 @@ def RecoveryView(page: ft.Page, controller):
 
         nueva_password = "123456"
 
-        # =========================
-        # CAMBIO AQUÍ
-        # =========================
 
         success = controller.model.actualizar_password(
 
@@ -82,7 +79,7 @@ def RecoveryView(page: ft.Page, controller):
 
         appbar=ft.AppBar(
             title=ft.Text("Recuperar Contraseña"),
-            bgcolor="#F03333"
+            bgcolor="#DB2626"
         ),
 
         controls=[

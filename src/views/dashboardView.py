@@ -1,62 +1,38 @@
 import flet as ft
-
 from components.navbar import Navbar
-
 
 def DashboardView(page: ft.Page, controller):
 
-
     try:
-
         user = page.session.user
-
     except:
-
         user = None
 
     nombre = "Usuario"
-
     if user:
-
         nombre = user.get("nombre", "Usuario")
 
-
     return ft.View(
-
         route="/dashboard",
-
         scroll=ft.ScrollMode.AUTO,
-
         appbar=ft.AppBar(
-
             title=ft.Text("POKEMOOD"),
-
-            bgcolor="#CAA1F8",
-
+            bgcolor="#DB2626",
             actions=[
-
                 ft.IconButton(
                     icon=ft.Icons.LOGOUT,
                     tooltip="Cerrar sesión",
                     on_click=lambda _: page.go("/")
                 )
-
             ]
-
         ),
-
         controls=[
-
             Navbar(page),
 
             ft.Container(
-
                 padding=20,
-
                 content=ft.Column(
-
                     [
-
 
                         ft.Text(
                             f"✨ Bienvenida {nombre}",
@@ -71,156 +47,75 @@ def DashboardView(page: ft.Page, controller):
 
                         ft.Divider(),
 
-
                         ft.ResponsiveRow(
-
                             [
-
                                 ft.ElevatedButton(
-
                                     "😎 Motivado",
-
                                     width=180,
-
                                     bgcolor="#FFF40D",
-
                                     on_click=lambda _: (
-                                        setattr(
-                                            page.session,
-                                            "pokemon",
-                                            "Magikarp"
-                                            
-                                            
-                                        ),
+                                        setattr(page.session, "pokemon", "Magikarp"),
                                         page.go("/pokemon")
                                     )
-
                                 ),
-                                
                                 ft.ElevatedButton(
-
                                     "😊 Feliz",
-
                                     width=180,
-
                                     bgcolor="#FFD966",
-
                                     on_click=lambda _: (
-                                        setattr(
-                                            page.session,
-                                            "pokemon",
-                                            "pikachu"
-                                            
-                                            
-                                        ),
+                                        setattr(page.session, "pokemon", "pikachu"),
                                         page.go("/pokemon")
                                     )
-
                                 ),
-
                                 ft.ElevatedButton(
-
                                     "😴 Cansado",
-
                                     width=180,
-
                                     bgcolor="#8FA0BD",
-
                                     on_click=lambda _: (
-                                        setattr(
-                                            page.session,
-                                            "pokemon",
-                                            "snorlax"
-                                        ),
+                                        setattr(page.session, "pokemon", "snorlax"),
                                         page.go("/pokemon")
                                     )
-
                                 ),
-
                                 ft.ElevatedButton(
-
                                     "😡 Enojado",
-
                                     width=180,
-
                                     bgcolor="#EA9999",
-
                                     on_click=lambda _: (
-                                        setattr(
-                                            page.session,
-                                            "pokemon",
-                                            "lucario"
-                                        ),
+                                        setattr(page.session, "pokemon", "lucario"),
                                         page.go("/pokemon")
                                     )
-
                                 ),
-                                
                                 ft.ElevatedButton(
-
                                     "🤬 Furioso",
-
                                     width=180,
-
                                     bgcolor="#FF1000",
-
                                     on_click=lambda _: (
-                                        setattr(
-                                            page.session,
-                                            "pokemon",
-                                            "Annihilape",
-                                            
-                                        ),
+                                        setattr(page.session, "pokemon", "Annihilape"),
                                         page.go("/pokemon")
                                     )
-
                                 ),
-                                
                                 ft.ElevatedButton(
-
                                     "😣 frustrado",
-
                                     width=180,
-
                                     bgcolor="#0017C7",
-
                                     on_click=lambda _: (
-                                        setattr(
-                                            page.session,
-                                            "pokemon",
-                                            "Psyduck"
-                                        ),
+                                        setattr(page.session, "pokemon", "Psyduck"),
                                         page.go("/pokemon")
                                     )
-
                                 ),
-                            
-
                                 ft.ElevatedButton(
-
                                     "🥺 Triste",
-
                                     width=180,
-
                                     bgcolor="#B4A7D6",
-
                                     on_click=lambda _: (
-                                        setattr(
-                                            page.session,
-                                            "pokemon",
-                                            "cubone"
-                                        ),
+                                        setattr(page.session, "pokemon", "cubone"),
                                         page.go("/pokemon")
                                     )
-
                                 )
-
                             ]
-
                         ),
 
                         ft.Divider(),
-
 
                         ft.Text(
                             "⭐ Recomendación del día",
@@ -229,89 +124,34 @@ def DashboardView(page: ft.Page, controller):
                         ),
 
                         ft.Card(
-
                             content=ft.Container(
-
                                 padding=20,
-
                                 content=ft.Column(
-
                                     [
-
                                         ft.Text(
                                             "⚡ Pikachu",
                                             size=25,
                                             weight="bold"
                                         ),
-
                                         ft.Text(
                                             "Hoy tienes una energía positiva."
                                         ),
-
                                         ft.ElevatedButton(
                                             "Ver Pokémon",
                                             on_click=lambda _: page.go("/pokemon")
                                         )
-
                                     ],
-
                                     spacing=10
-
                                 )
-
                             )
-
                         ),
 
                         ft.Divider(),
 
-
-                        ft.Text(
-                            "🚀 Accesos rápidos",
-                            size=22,
-                            weight="bold"
-                        ),
-
-                        ft.ResponsiveRow(
-
-                            [
-
-                                ft.ElevatedButton(
-                                    "🌈 Emociones",
-                                    width=180,
-                                    on_click=lambda _: page.go("/emociones")
-                                ),
-
-                                ft.ElevatedButton(
-                                    "📖 Historial",
-                                    width=180,
-                                    on_click=lambda _: page.go("/historial")
-                                ),
-
-                                ft.ElevatedButton(
-                                    "⚡ Pokémon",
-                                    width=180,
-                                    on_click=lambda _: page.go("/pokemon")
-                                ),
-
-                                ft.ElevatedButton(
-                                    "👤 Perfil",
-                                    width=180,
-                                    on_click=lambda _: page.go("/perfil")
-                                )
-
-                            ]
-
-                        )
-
                     ],
-
                     spacing=20
-
                 )
-
             )
 
         ]
-
     )

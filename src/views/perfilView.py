@@ -39,7 +39,7 @@ def PerfilView(page: ft.Page, controller):
 
             title=ft.Text("Perfil"),
 
-            bgcolor="#CAA1F8"
+            bgcolor="#DB2626"
 
         ),
 

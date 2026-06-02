@@ -10,7 +10,7 @@ def HistorialView(page: ft.Page, controller):
 
         appbar=ft.AppBar(
             title=ft.Text("📖 Historial"),
-            bgcolor="#CAA1F8"
+            bgcolor="#DB2626"
         ),
 
         controls=[

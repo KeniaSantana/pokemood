@@ -100,7 +100,7 @@ def RegisterView(page: ft.Page, controller):
 
         appbar=ft.AppBar(
             title=ft.Text("Registro"),
-            bgcolor="#FF6666"
+            bgcolor="#DB2626"
         ),
 
         controls=[

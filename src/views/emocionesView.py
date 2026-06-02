@@ -22,7 +22,7 @@ def EmocionesView(page: ft.Page, controller):
 
         appbar=ft.AppBar(
             title=ft.Text("🌈 Emociones"),
-            bgcolor="#FFED88"
+            bgcolor="#DB2626"
         ),
 
         controls=[
