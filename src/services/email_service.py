@@ -6,9 +6,9 @@ from email.mime.multipart import MIMEMultipart
 
 def enviar_correo(destinatario, nueva_password):
 
-    remitente = "TU_CORREO@gmail.com"
+    remitente = "mikelitopineda737@gmail.com"
 
-    contraseña = "TU_PASSWORD_DE_APLICACION"
+    contraseña = "bonb kpjv qtrj bhyq"
 
     asunto = "Recuperación de contraseña"
 

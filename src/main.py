@@ -5,7 +5,6 @@ from views.dashboardView import DashboardView
 from views.registerView import RegisterView
 from views.recoveryView import RecoveryView
 from views.emocionesView import EmocionesView
-from views.historialView import HistorialView
 from views.pokemonView import PokemonView
 from views.perfilView import PerfilView
 
@@ -70,16 +69,6 @@ def start(page: ft.Page):
                     auth_ctrl
                 )
             )
-
-        elif page.route == "/historial":
-
-            page.views.append(
-                HistorialView(
-                    page,
-                    auth_ctrl
-                )
-            )
-
 
         elif page.route == "/pokemon":
 

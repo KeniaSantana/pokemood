@@ -24,11 +24,6 @@ def Navbar(page: ft.Page):
                 ),
 
                 ft.TextButton(
-                    "📖 Historial",
-                    on_click=lambda _: page.go("/historial")
-                ),
-
-                ft.TextButton(
                     "⚡ Pokémon",
                     on_click=lambda _: page.go("/pokemon")
                 ),

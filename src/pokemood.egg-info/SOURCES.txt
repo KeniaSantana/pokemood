@@ -16,7 +16,6 @@ src/services/email_service.py
 src/services/pokemonService.py
 src/views/dashboardView.py
 src/views/emocionesView.py
-src/views/historialView.py
 src/views/loginView.py
 src/views/perfilView.py
 src/views/pokemonView.py
