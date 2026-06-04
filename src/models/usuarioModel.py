@@ -89,7 +89,7 @@ class UsuarioModel:
             print(user["password"])
             print("LONGITUD HASH:", len(user["password"]))
 
-            # Validar contraseña usando bcrypt
+
             if bcrypt.checkpw(
                 password.encode("utf-8"),
                 user["password"].encode("utf-8")
@@ -129,7 +129,7 @@ class UsuarioModel:
                 print("Correo no encontrado")
                 return False
 
-            # Hashear nueva contraseña
+
             hashed_pw = bcrypt.hashpw(
                 nueva_password.encode("utf-8"),
                 bcrypt.gensalt()
