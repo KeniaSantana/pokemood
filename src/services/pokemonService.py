@@ -25,7 +25,7 @@ class PokemonService:
         Devuelve una lista de diccionarios con los Pokémon.
         Cada diccionario contiene: nombre, imagen, tipo, altura y peso.
         """
-        url = "https://pokeapi.co/api/v2/pokemon?limit=1025"  
+        url = "https://pokeapi.co/api/v2/pokemon?limit=100"  
         response = requests.get(url)
 
         if response.status_code != 200:
